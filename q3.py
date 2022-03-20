@@ -80,52 +80,60 @@ for m in range(t):
     length=int(input())
     input_string=input()
     answer="IMPOSSIBLE"
-    if(len(input_string)>=5):
+    if('?' in input_string):
         qcount=input_string.count('?')
+        binarynum="0"*qcount
         indexlist=list()
-        input_string_copy_q=input_string.replace('1','1',1)
+        #input_string_copy=input_string#made a copy essentially
+        #print(input_string_copy)
         for i in range(qcount):
-            indexlist.append(input_string_copy_q.find('?'))
-            input_string_copy_q=input_string.replace('?',f"?{qcount}",1)
+            indexlist.append(input_string.find('?'))
+            input_string=input_string.replace('?',"d",1)
+        #print(input_string_copy)
         #input_string_copy=input_string.replace('?','0')
-        input_string_copy=input_string.replace('?','0')
-        l = longestPalSubstr(input_string_copy)
-        #print("Length is:", l)
-        if(l<5):
-            answer="POSSIBLE"
-        c=0
-        while(answer!="POSSIBLE" and c<len(indexlist)):
-            input_string_copy=list(input_string_copy)
-            input_string_copy[indexlist[c]]='1'
-            instring=""
-            for e in input_string_copy:
-                instring+=e
-            input_string_copy=instring
-            l = longestPalSubstr(input_string_copy)
+        #print(indexlist)
+        qcount=2**qcount
+        q=0
+        while(answer!="POSSIBLE" and q<qcount):
+            binaryn=str(bin(int(binarynum,2)+int("1",2)))
+            binaryn=binaryn[2:]
+            binarynumlist=list()
+            for g in binarynum:
+                binarynumlist.append(g)
+            #print(binarynumlist)
+            #print(binaryn)
+            if(len(binaryn)<=len(binarynumlist)):
+                for b in range(1,len(binaryn)+1):
+                    binarynumlist[-b]=binaryn[-b]
+            binarynum=""
+            for b in binarynumlist:
+                binarynum+=b
+            #print(binaryn)
+            #print(binarynum)
+            stringlist=list()
+            for l in input_string:
+                stringlist.append(l)
+           # print(stringlist)
+            
+            for ind in range(len(indexlist)):
+                stringlist[indexlist[ind]]=binarynum[ind]
+            input_string=""
+            for string in stringlist:
+                input_string+=string
+            l = longestPalSubstr(input_string)
+            #print(l)
             #print("Length is:", l)
             if(l<5):
                 answer="POSSIBLE"
-            c+=1
-        input_string_copy=input_string.replace('?','1')
-        l = longestPalSubstr(input_string_copy)
+            q+=1
+    else:
+        l = longestPalSubstr(input_string)
+        #print(l)
         #print("Length is:", l)
         if(l<5):
-            answer="POSSIBLE"
-        c=0
-        while(answer!="POSSIBLE" and c<len(indexlist)):
-            input_string_copy=list(input_string_copy)
-            input_string_copy[indexlist[c]]='0'
-            instring=""
-            for e in input_string_copy:
-                instring+=e
-            input_string_copy=instring
-            l = longestPalSubstr(input_string_copy)
-            #print("Length is:", l)
-            if(l<5):
-                answer="POSSIBLE"
-            c+=1
-        
-    print(f"Case #{m+1}: {answer}")
+            answer="POSSIBLE"  
+    answerlist.append(answer)
+#outputfile = open("test_set_1\\ts1_output.txt","r")
 
-
-
+for e in range(t):    
+    print(f"Case #{e+1}: {answerlist[e]}")
