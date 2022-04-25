@@ -29,6 +29,4 @@ for m in range(t):
             answerlist.append(answer)
 for ans in range(len(answerlist)):
     print(f"Case #{ans+1}: {answerlist[ans]}")
-        
-
 
