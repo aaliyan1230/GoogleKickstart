@@ -1,8 +1,8 @@
 import sys
-# def is_palindrome(string):
-#     if(string==string[::-1]):
-#         return True
-#     return False
+def is_palindrome_of_5_or_more_chars(string):
+    if(string==string[::-1]):
+        return True
+    return False
     
 # Python program
 

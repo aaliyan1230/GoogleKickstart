@@ -22,7 +22,4 @@ def run(inputFile, outputFile):
                     answercount+=1
             print(answercount)
 
-#run("interesting_integers_sample_ts1_input.txt"," ")
-outputfile = open("test_set_2\\ts2_output.txt","r")
-for line in outputfile:
-    print(line)
+run("interesting_integers_sample_ts1_input.txt"," ")

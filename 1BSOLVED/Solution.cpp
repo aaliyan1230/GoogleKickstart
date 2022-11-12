@@ -175,7 +175,7 @@ const int d4i[4]={-1, 0, 1, 0}, d4j[4]={0, 1, 0, -1};
 const int d8i[8]={-1, -1, 0, 1, 1, 1, 0, -1}, d8j[8]={0, 1, 1, 1, 0, -1, -1, -1};
 
 void solve() {
-	ll r, a, b;
+	long long r, a, b;
 	read(r, a, b);
 	long double PI = atan(1)*4;
 	ll area=0;

@@ -15,7 +15,6 @@ for t in range(testcases):
         answer+=pi*radius**2
         radius=radius//strlist[2]
         answer+=pi*radius**2
-        print(answer)
     print(f"Case#{t+1}: {answer}")
 
 
